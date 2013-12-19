@@ -35,7 +35,7 @@
           .replace(unit, 'return this.unit($1)')
           .replace(backcall, function(_, a, b) {
             end += '})';
-            return 'return '+ b +'.bind(function(_1){'+ a +'=_1';
+            return 'return '+ b +'.bind(function(_1){var '+ a +'=_1';
           });
       }, '')
       .split(/\n/)
