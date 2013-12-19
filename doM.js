@@ -15,12 +15,14 @@
       return s.replace(regex, replacement);
     };
   };
-
+  
   var doM = function(f) {
+    
     var unit = /return (.+)$/
-      , backcall = /(\w+) <- (.+)/
+      , backcall = /(.+) <- (.+)/
       , method = /\$(\w+)\(/
       , end = '';
+    
     return Function(f
       .toString()
       .split(/[\n;]/)
@@ -32,8 +34,8 @@
           .replace(method, '_0 <- this.$1(')
           .replace(unit, 'return this.unit($1)')
           .replace(backcall, function(_, a, b) {
-            end += '});';
-            return 'return '+ b +'.bind(function('+ a +'){';
+            end += '})';
+            return 'return '+ b +'.bind(function(_1){'+ a +'=_1';
           });
       }, '')
       .split(/\n/)
