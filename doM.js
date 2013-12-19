@@ -4,7 +4,7 @@
  * @author: Cedric Ruiz
  * @license MIT
  */
-(global || window).doM = (function() {
+(window || global).doM = (function() {
 
   var trim = function(s) {
     return s.trim();
