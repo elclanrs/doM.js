@@ -15,7 +15,7 @@ var Either = {
     this.l = l;
     this.isLeft = true;
     this.toString = function() {
-      return "Left: " + this.l;
+      return "Left: " + JSON.stringify(this.l);
     };
     this.valueOf = function() {
       return this.l;
@@ -25,7 +25,7 @@ var Either = {
     this.r = r;
     this.isRight = true;
     this.toString = function() {
-      return "Right: " + this.r;
+      return "Right: " + JSON.stringify(this.r);
     };
     this.valueOf = function() {
       return this.r;

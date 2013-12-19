@@ -37,7 +37,7 @@ var Maybe = {
     this.x = x;
     this.isJust = true;
     this.toString = function() {
-      return 'Just: '+ this.x;
+      return 'Just: '+ JSON.stringify(this.x);
     };
   }),
   valueOf: function() {
