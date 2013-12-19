@@ -26,7 +26,7 @@ var Maybe = {
       return f.call(this, this.x);
     }
   },
-  nothing: fluent(function(x) {
+  nothing: fluent(function() {
     this.x = null;
     this.isNothing = true;
     this.toString = function() {
