@@ -4,7 +4,7 @@
  * @author: Cedric Ruiz
  * @license MIT
  */
-(window || global).doM = (function() {
+(typeof window !== 'undefined' ? window : global).doM = (function() {
 
   var trim = function(s) {
     return s.trim();
@@ -19,6 +19,7 @@
   var doM = function(f) {
     var unit = /return (.+)$/
       , backcall = /(\w+) <- (.+)/
+      , method = /\$(\w+)\(/
       , end = '';
     return Function(f
       .toString()
@@ -28,7 +29,7 @@
       .filter(Boolean)
       .reduce(function(a, b) {
         return a +';\n'+ b
-          .replace(/\$(\w+)\(/, '_ <- this.$1(')
+          .replace(method, '_0 <- this.$1(')
           .replace(unit, 'return this.unit($1)')
           .replace(backcall, function(_, a, b) {
             end += '});';
