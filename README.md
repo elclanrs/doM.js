@@ -126,3 +126,14 @@ The `result` will be the monadic value. `toString` will give you info about the 
 ```javascript
 result + 2
 ```
+
+In ES6 you can use destructuring assignment:
+
+```javascript
+// This works in Firefox today
+var result = doM(function() {
+  a <- add(1, 2);
+  [b, c] <- pair(3, 4);
+  return a + b + c;
+});
+```
