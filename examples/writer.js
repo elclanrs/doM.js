@@ -9,9 +9,6 @@ var Writer = {
     f.call(this, this.x);
     this.w = w.concat(this.w);
   }),
-  get: function() {
-    return this.w;
-  },
   tell: fluent(function(w) {
     this.w = [w];
   }),
@@ -35,4 +32,4 @@ var result = doM(function() {
 });
 
 console.log(result.toString());
-//^ State (15, ["add 1 plus 2, add 3 plus 2", "multiply 3 by 5"])
+//^ Writer (15, ["add 1 plus 2, add 3 plus 2", "multiply 3 by 5"])
