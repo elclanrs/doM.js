@@ -32,4 +32,4 @@ var result = doM(function() {
 });
 
 console.log(result.toString());
-//^ Writer (15, ["add 1 plus 2, add 3 plus 2", "multiply 3 by 5"])
+//^ Writer (15, ["add 1 plus 2", "add 3 plus 2", "multiply 3 by 5"])
