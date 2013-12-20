@@ -1,6 +1,6 @@
 # doM
 "do" monad syntax for JavaScript.  
-**Demo:** http://jsbin.com/IhIyEnI/1/edit
+**Demo:** http://jsbin.com/UJIpEGA/1/edit
 
 ## Usage
 Create your monad as an object, use `this` as monadic value. For example:
