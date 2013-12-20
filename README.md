@@ -140,9 +140,9 @@ var result = doM(function() {
 
 ## Limitations & workarounds
 
-1. `Function.prototype.toString` is not reliable in old browsers.
-2. Don't forget the semicolons. `doM` uses loose regexes to transform the syntax.
-3. `doM` can't be nested, but you can (and should) chain a previous computation of the same monad:
+- `Function.prototype.toString` is not reliable in old browsers.
+- Don't forget the semicolons. `doM` uses loose regexes to transform the syntax.
+- `doM` can't be nested, but you can (and should) chain a previous computation of the same monad:
 
 ```javascript
 var resultA = doM(function() {
@@ -156,3 +156,14 @@ var resultB = doM(function() {
   return x + 1;
 });
 ```
+
+- JSHint will complain about the syntax, but you can ignore it or turn it off:
+
+```javascript
+/* jshint ignore:start */
+var result = doM(function() {
+  ...
+});
+/* jshint ignore:end */
+```
+
