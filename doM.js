@@ -6,28 +6,25 @@
  */
 (typeof window !== 'undefined' ? window : global).doM = (function() {
 
-  var trim = function(s) {
-    return s.trim();
-  };
-
-  var replace = function(regex, replacement) {
-    return function(s) {
-      return s.replace(regex, replacement);
+  var dotf = function(f) {
+    var args = Array.prototype.slice.call(arguments, 1);
+    return function(x) {
+      return x[f].apply(x, args);
     };
   };
-  
+
   var doM = function(f) {
-    
+
     var unit = /return (.+)$/
       , backcall = /(.+) <- (.+)/
       , method = /\$(\w+)\(/
       , end = '';
-    
+
     return Function(f
       .toString()
       .split(/[\n;]/)
       .slice(1,-1)
-      .map(trim)
+      .map(dotf('trim'))
       .filter(Boolean)
       .reduce(function(a, b) {
         return a +';\n'+ b
@@ -40,7 +37,7 @@
       }, '')
       .split(/\n/)
       .slice(1)
-      .map(replace(/\{;$/, '{'))
+      .map(dotf('replace', /\{;$/, '{'))
       .join('') + end
     )();
   };
