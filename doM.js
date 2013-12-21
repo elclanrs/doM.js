@@ -18,6 +18,7 @@
     var unit = /return (.+)$/
       , backcall = /(.+) <- (.+)/
       , method = /\$(\w+)\(/
+      , comments = /^\/\/.+/
       , end = '';
 
     return Function(f
@@ -26,6 +27,7 @@
       .slice(1,-1)
       .map(dotf('trim'))
       .filter(Boolean)
+      .map(dotf('replace', comments, ''))
       .reduce(function(a, b) {
         return a +';\n'+ b
           .replace(method, '_0 <- this.$1(')

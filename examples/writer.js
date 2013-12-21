@@ -4,11 +4,12 @@ var Writer = {
     this.w = w == null ? [] : [w];
     this.x = x;
   }),
-  bind: fluent(function(f) {
-    var w = this.w;
-    f.call(this, this.x);
-    this.w = w.concat(this.w);
-  }),
+  bind: function(f) {
+    var w = this.w
+      , fx = f.call(this, this.x);
+    fx.w = w.concat(fx.w);
+    return fx;
+  },
   tell: fluent(function(w) {
     this.w = [w];
   }),
@@ -33,3 +34,4 @@ var result = doM(function() {
 
 console.log(result.toString());
 //^ Writer (15, ["add 1 plus 2", "add 3 plus 2", "multiply 3 by 5"])
+

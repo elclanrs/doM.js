@@ -6,14 +6,6 @@
 Create your monad as an object, use `this` as monadic value. For example:
 
 ```javascript
-// Helper to chain `this`
-var fluent = function(f) {
-  return function() {
-    f.apply(this, arguments);
-    return this;
-  };
-};
-
 // Maybe monad
 var Maybe = {
   unit: fluent(function(x) {
@@ -29,6 +21,7 @@ var Maybe = {
   nothing: fluent(function() {
     this.x = null;
     this.isNothing = true;
+    this.isJust = false;
     this.toString = function() {
       return 'Nothing';
     };
@@ -36,6 +29,7 @@ var Maybe = {
   just: fluent(function(x) {
     this.x = x;
     this.isJust = true;
+    this.isNothing = false;
     this.toString = function() {
       return 'Just: '+ JSON.stringify(this.x);
     };
@@ -142,6 +136,7 @@ var result = doM(function() {
 
 - `Function.prototype.toString` is not reliable in old browsers.
 - Don't forget the semicolons. `doM` uses loose regexes to transform the syntax.
+- Only standard `// comments` are parsed.
 - `doM` can't be nested, but you can (and should) chain a previous computation of the same monad:
 
 ```javascript
