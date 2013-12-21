@@ -1,9 +1,8 @@
 // Either monad
 var Either = {
-  unit: fluent(function(r) {
-    this.r = r;
-    this.l = null;
-  }),
+  unit: function(x) {
+    return this.right(x);
+  },
   bind: function(f) {
     if (this.isLeft) {
       return this.left(this.l);

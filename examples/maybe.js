@@ -1,8 +1,8 @@
 // Maybe monad
 var Maybe = {
-  unit: fluent(function(x) {
-    this.x = x;
-  }),
+  unit: function(x) {
+    return this.just(x);
+  },
   bind: function(f) {
     if (this.isNothing) {
       return this.nothing();
