@@ -1,6 +1,6 @@
 # doM
 "do" monad syntax for JavaScript.  
-**Demo:** http://jsbin.com/OmoGaKuC/1/edit
+**Demo:** http://jsbin.com/IfuDExEZ/1/edit
 
 ## Usage
 Create your monad as an object, use `this` as monadic value. For example:
@@ -152,9 +152,12 @@ var resultB = doM(function() {
 });
 ```
 
-- JSHint will complain about the syntax, but you can ignore it or turn it off:
-
+- JSHint will complain about the syntax, but you may try these options to remove the warnings or ignore the block:
 ```javascript
+/*jshint laxcomma:true boss:true expr:true evil:true eqnull:true */
+
+// OR
+
 /* jshint ignore:start */
 var result = doM(function() {
   ...
