@@ -21,7 +21,6 @@ var Maybe = {
   nothing: fluent(function() {
     this.x = null;
     this.isNothing = true;
-    this.isJust = false;
     this.toString = function() {
       return 'Nothing';
     };
@@ -29,7 +28,6 @@ var Maybe = {
   just: fluent(function(x) {
     this.x = x;
     this.isJust = true;
-    this.isNothing = false;
     this.toString = function() {
       return 'Just: '+ JSON.stringify(this.x);
     };
