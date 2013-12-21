@@ -153,7 +153,7 @@ var resultB = doM(function() {
 ```
 
 - JSHint will complain about the syntax, but you may try these options to remove the warnings or ignore the block:
-c
+
 ```javascript
 /*jshint laxcomma:true boss:true expr:true evil:true eqnull:true */
 
