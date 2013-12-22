@@ -36,23 +36,6 @@ var Maybe = {
     return this.x;
   }
 };
-
-// Testing the monad laws
-var by2 = function(x) {
-  if (x == null) {
-    return Maybe.nothing();
-  }
-  return Maybe.just(x*2);
-};
-
-var maybe = Maybe.unit(2);
-
-// Left identity
-maybe.bind(by2).valueOf() == by2(2).valueOf() // true
-// Right identity
-maybe.bind(function(x){ return Maybe.unit(x) }).valueOf() == maybe // true
-// Associativity
-maybe.bind(function(x){ return by2(x).bind(by2) }).valueOf() == maybe.bind(by2).bind(by2).valueOf() // true
 ```
 
 Then build your functions with the monad:
@@ -145,6 +128,26 @@ var result = doM(function() {
   [b, c] <- pair(3, 4);
   return a + b + c;
 });
+```
+
+## Testing monad laws
+
+```javascript
+var by2 = function(x) {
+  if (x == null) {
+    return Maybe.nothing();
+  }
+  return Maybe.just(x*2);
+};
+
+var maybe = Maybe.unit(2);
+
+// Left identity
+maybe.bind(by2).valueOf() == by2(2).valueOf() // true
+// Right identity
+maybe.bind(function(x){ return Maybe.unit(x) }).valueOf() == maybe // true
+// Associativity
+maybe.bind(function(x){ return by2(x).bind(by2) }).valueOf() == maybe.bind(by2).bind(by2).valueOf() // true
 ```
 
 ## Limitations & workarounds
