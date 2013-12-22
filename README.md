@@ -1,6 +1,6 @@
 # doM
 "do" monad syntax for JavaScript.  
-**This is just a proof of concept, not to use in production**
+**This is just a proof of concept, not to use in production**  
 **Demo:** http://jsbin.com/omUxotAm/1/edit
 
 ## Usage
