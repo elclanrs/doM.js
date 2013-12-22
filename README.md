@@ -145,7 +145,7 @@ var maybe = Maybe.unit(2);
 // Left identity
 maybe.bind(by2).valueOf() == by2(2).valueOf() // true
 // Right identity
-maybe.bind(function(x){ return Maybe.unit(x) }).valueOf() == maybe // true
+maybe.bind(function(x){ return Maybe.unit(x) }).valueOf() == maybe.valueOf() // true
 // Associativity
 maybe.bind(function(x){ return by2(x).bind(by2) }).valueOf() == maybe.bind(by2).bind(by2).valueOf() // true
 ```
