@@ -1,5 +1,6 @@
 # doM
 "do" monad syntax for JavaScript.  
+**This is just a proof of concept, not to use in production**
 **Demo:** http://jsbin.com/omUxotAm/1/edit
 
 ## Usage
@@ -152,6 +153,7 @@ maybe.bind(function(x){ return by2(x).bind(by2) }).valueOf() == maybe.bind(by2).
 
 ## Limitations & workarounds
 
+- Closures don't work (TODO).
 - `Function.prototype.toString` is not reliable in old browsers.
 - Don't forget the semicolons. `doM` uses loose regexes to transform the syntax.
 - Only standard `// comments` are parsed.
