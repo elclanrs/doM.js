@@ -33,7 +33,7 @@
           .replace(method, '_0 <- this.$1(')
           .replace(unit, 'return this.unit($1)')
           .replace(backcall, function(_, a, b) {
-            end += '})';
+            end += '});';
             return 'return '+ b +'.bind(function(_1){var '+ a +'=_1';
           });
       }, '')
