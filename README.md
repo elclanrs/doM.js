@@ -153,7 +153,7 @@ maybe.bind(function(x){ return by2(x).bind(by2) }).valueOf() == maybe.bind(by2).
 
 ## Limitations & workarounds
 
-- Closures don't work (TODO).
+- Ignores lexical scope. Unfortunately.
 - `Function.prototype.toString` is not reliable in old browsers.
 - Don't forget the semicolons. `doM` uses loose regexes to transform the syntax.
 - Only standard `// comments` are parsed.
